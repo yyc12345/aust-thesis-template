@@ -78,26 +78,96 @@
 %\newenvironment{abstract}{\clearpage \section*{\centering 摘要}}{\clearpage}
 
 % region: 封面和类封面预设
+\usepackage{xparse}
+\usepackage{ulem}
+\ExplSyntaxOn
+
+% 定义键值族
+\keys_define:nn { aust/report }
+{
+    semester   .tl_set:N = \l_aust_semester_tl,
+    semester   .initial:n = {示例2025-2026学年~秋季学期},
+    level      .tl_set:N = \l_aust_level_tl,
+    level      .initial:n = {示例研究生课程},
+    course     .tl_set:N = \l_aust_course_tl,
+    course     .initial:n = {示例课程},
+
+    title      .tl_set:N = \l_aust_title_tl,
+    title      .initial:n = {示例报告},
+    school     .tl_set:N = \l_aust_school_tl,
+    school     .initial:n = {示例学院},
+    major      .tl_set:N = \l_aust_major_tl,
+    major      .initial:n = {示例专业},
+    sid        .tl_set:N = \l_aust_sid_tl,
+    sid        .initial:n = {1945000000},
+    name       .tl_set:N = \l_aust_name_tl,
+    name       .initial:n = {示例姓名},
+    lecturer   .tl_set:N = \l_aust_lecturer_tl,
+    lecturer   .initial:n = {示例讲师},
+
+    date       .tl_set:N = \l_aust_date_tl,
+    date       .initial:n = {1945年01月01日},
+}
+
+% 内部排版函数 (纯逻辑，不含接口)
+\cs_new_protected:Npn \aust_report_cover_internal:
+{
+    \begin{titlepage}
+        \austnopagenum
+        \centering
+        \renewcommand{\arraystretch}{1.6}
+
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics{aust-report-banner.jpg}
+        \end{figure}
+        \vspace{0.4cm}
+        {\heiti \zihao{2} \textbf{\tl_use:N \l_aust_semester_tl} \par }
+        \vspace{0.4cm}
+        {\heiti \zihao{2} \textbf{\tl_use:N \l_aust_level_tl} \par }
+        \vspace{0.4cm}
+        {\songti \zihao{1} \textbf{\tl_use:N \l_aust_course_tl} \par }
+
+        \vfill
+        {
+            \kaishu{} \zihao{3}
+            \begin{tabular}{r@{\quad}p{11.5em}}
+                题\hspace{2em}目： & \tl_use:N \l_aust_title_tl \\
+                \cline{2-2}
+                学\hspace{2em}院： & \tl_use:N \l_aust_school_tl \\
+                \cline{2-2}
+                专\hspace{2em}业： & \tl_use:N \l_aust_major_tl \\
+                \cline{2-2}
+                学\hspace{2em}号： & \tl_use:N \l_aust_sid_tl \\
+                \cline{2-2}
+                姓\hspace{2em}名： & \tl_use:N \l_aust_name_tl \\
+                \cline{2-2}
+                任课教师： & \tl_use:N \l_aust_lecturer_tl \\
+                \cline{2-2}
+            \end{tabular}
+        }
+        \vfill
+
+        {\kaishu \zihao{3} \tl_use:N \l_aust_date_tl \par }
+        \vspace{2cm}
+    \end{titlepage}
+}
+
+% 全局配置命令
+\NewDocumentCommand \austreportsetup { m }
+  { \keys_set:nn { aust/report } { #1 } }
+
+% 封面生成接口 (xparse 风格，支持局部覆盖)
 % AUST课程报告封面
-\newcommand{\austreportcover}{%
-  \begin{titlepage} % titlepage 环境通常会自动处理分页
-    \centering
-    {\LARGE \@title \par}
-    {\large \@author \par}
-    {\large \@date \par}
-  \end{titlepage}
-  \thispagestyle{empty} % <--- 关键：强制封面页不显示页码
-  \setcounter{page}{1}  % 可选：确保下一页从第1页开始计数（虽然页码不可见）
-}
+\NewDocumentCommand \austreportcover { O{} }
+  {
+    \group_begin:
+    \keys_set:nn { aust/report } { #1 }
+    \aust_report_cover_internal:
+    \group_end:
+  }
 % AUST论文封面
-\newcommand{\austthesiscover}{%
-  \begin{titlepage} % titlepage 环境通常会自动处理分页
-    \centering
-    {\LARGE \@title \par}
-    {\large \@author \par}
-    {\large \@date \par}
-  \end{titlepage}
-  \thispagestyle{empty} % <--- 关键：强制封面页不显示页码
-  \setcounter{page}{1}  % 可选：确保下一页从第1页开始计数（虽然页码不可见）
-}
+
+
+\ExplSyntaxOff
 % endregion
