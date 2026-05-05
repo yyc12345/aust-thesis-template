@@ -74,8 +74,26 @@
 \captionsetup[figure]{labelformat=simple, labelsep=space}
 \renewcommand{\thefigure}{\arabic{section}-\arabic{figure}}
 
-% 六、定义常用命令（如摘要环境）
-%\newenvironment{abstract}{\clearpage \section*{\centering 摘要}}{\clearpage}
+% region: 摘要和关键词命令
+\newenvironment{austabstract}[1]
+{
+	\clearpage
+	\section*{\centering \heiti \zihao{3} #1}}
+{
+	\clearpage
+}
+\newcommand{\austkeywords}[2]{
+	\textbf{#1} #2
+}
+% endregion
+
+% region: 参考文献格式设置
+% TODO:
+% 需要判断一下这个包的版本，这个包的旧版格式名称是gbt7714-numerical
+% 而新版则是gbt7714-numeric。
+\usepackage{gbt7714}
+\bibliographystyle{gbt7714-numerical}
+% endregion
 
 % region: 封面和类封面预设
 \usepackage{xparse}
@@ -149,7 +167,6 @@
         \vfill
 
         {\kaishu \zihao{3} \tl_use:N \l_aust_date_tl \par }
-        \vspace{2cm}
     \end{titlepage}
 }
 
