@@ -32,15 +32,15 @@
 \pagestyle{fancy}
 \fancyhf{}
 
-% 页眉边距为1.6cm，由于实际页眉边距是`2.5cm + voffset`，所以voffset设置为-0.9cm（-9mm）
-\setlength{\voffset}{-9mm}
+% 页眉边距是我直接算的差值填的，我也不知道为啥填理论值会不对。
+\setlength{\voffset}{2.6mm}
 % 页眉内容
 \fancyhead[C]{\zihao{5} \songti \leftmark}
 % 页眉线宽
 \renewcommand{\headrulewidth}{0.1mm}
 
-% 页脚边距为1.5cm，由于实际页脚边距是`页面底边距 - footskip`，所以footskip设置为1cm（10mm）
-\setlength{\footskip}{10mm}
+% 页脚边距是我直接算的差值填的，我也不知道为啥填理论值会不对。
+\setlength{\footskip}{2.5mm}
 % 页脚是居中的，两个连字符中间夹页码的样式。五号宋体。
 \fancyfoot[C]{\zihao{5}\songti -\hspace{0.5em}\thepage\hspace{0.5em}-}
 % 页脚线宽为0（即没有页脚线）
