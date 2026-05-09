@@ -69,10 +69,13 @@
 \titleformat{\subsection}{\zihao{4}\heiti}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{\zihao{-4}\heiti}{\thesubsubsection}{1em}{}
 
-% 四、图表标题格式（示例：黑体，图1-1风格）
+% 四、图表标题格式（示例：黑体，图1风格）
 % 双语标题：https://www.latexstudio.net/archives/51638.html
-\captionsetup[figure]{labelformat=simple, labelsep=space}
-\renewcommand{\thefigure}{\arabic{section}-\arabic{figure}}
+\DeclareCaptionFormat{austcaption}{\heiti{}\zihao{5}#1#2#3\par}
+\captionsetup[figure]{format=austcaption, labelsep=space}
+\captionsetup[table]{format=austcaption, labelsep=space}
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\arabic{table}}
 
 % region: 摘要和关键词命令
 \newenvironment{austabstract}[1]
