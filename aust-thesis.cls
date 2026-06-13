@@ -239,7 +239,7 @@
 
         \begin{figure}[!h]
             \centering
-            \includegraphics{aust-nologo-banner.png}
+            \includegraphics[scale=1.4]{aust-nologo-banner.png}
         \end{figure}
         \vspace{0.4cm}
         {\songti \zihao{2} \textbf{\tl_use:N \l_aust_br_level_tl} \par }
