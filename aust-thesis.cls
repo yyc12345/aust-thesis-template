@@ -18,7 +18,7 @@
 
 % region: 正文中文和西文字体以及字号设置
 % 设置西文字体
-\usepackage{fontspec}
+\RequirePackage{fontspec}
 \setmainfont{Times New Roman}
 % 设置中文字体
 \songti{}
@@ -99,16 +99,17 @@
 % endregion
 
 % region: 参考文献格式设置
-% TODO:
-% 需要判断一下这个包的版本，这个包的旧版格式名称是gbt7714-numerical
-% 而新版则是gbt7714-numeric。
-\usepackage{gbt7714}
-\bibliographystyle{gbt7714-numerical}
+% gbt7714 v2.2.0 (2026-05-03) 将样式名从gbt7714-numerical改为gbt7714-numeric。
+% 需要分别处理兼容性
+\RequirePackage{gbt7714}
+\@ifpackagelater{gbt7714}{2026/05/03}
+  {\bibliographystyle{gbt7714-numeric}}
+  {\bibliographystyle{gbt7714-numerical}}
 % endregion
 
 % region: 封面和类封面预设
-\usepackage{xparse}
-\usepackage{ulem}
+\RequirePackage{xparse}
+\RequirePackage{ulem}
 \ExplSyntaxOn
 
 % 定义键值族
@@ -146,9 +147,9 @@
         \centering
         \renewcommand{\arraystretch}{1.6}
 
-        \begin{figure}[H]
+        \begin{figure}[!h]
             \centering
-            \includegraphics{aust-report-banner.jpg}
+            \includegraphics{aust-logo-banner.jpg}
         \end{figure}
         \vspace{0.4cm}
         {\heiti \zihao{2} \textbf{\tl_use:N \l_aust_semester_tl} \par }
