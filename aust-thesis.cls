@@ -113,34 +113,34 @@
 \ExplSyntaxOn
 
 % 定义键值族
-\keys_define:nn { aust/report }
+\keys_define:nn { aust/class_report }
 {
-    semester   .tl_set:N = \l_aust_semester_tl,
+    semester   .tl_set:N = \l_aust_cr_semester_tl,
     semester   .initial:n = {示例2025-2026学年秋季学期},
-    level      .tl_set:N = \l_aust_level_tl,
+    level      .tl_set:N = \l_aust_cr_level_tl,
     level      .initial:n = {示例研究生课程},
-    course     .tl_set:N = \l_aust_course_tl,
+    course     .tl_set:N = \l_aust_cr_course_tl,
     course     .initial:n = {示例课程},
 
-    title      .tl_set:N = \l_aust_title_tl,
+    title      .tl_set:N = \l_aust_cr_title_tl,
     title      .initial:n = {示例报告},
-    school     .tl_set:N = \l_aust_school_tl,
+    school     .tl_set:N = \l_aust_cr_school_tl,
     school     .initial:n = {示例学院},
-    major      .tl_set:N = \l_aust_major_tl,
+    major      .tl_set:N = \l_aust_cr_major_tl,
     major      .initial:n = {示例专业},
-    sid        .tl_set:N = \l_aust_sid_tl,
+    sid        .tl_set:N = \l_aust_cr_sid_tl,
     sid        .initial:n = {示例1945000000},
-    name       .tl_set:N = \l_aust_name_tl,
+    name       .tl_set:N = \l_aust_cr_name_tl,
     name       .initial:n = {示例姓名},
-    lecturer   .tl_set:N = \l_aust_lecturer_tl,
+    lecturer   .tl_set:N = \l_aust_cr_lecturer_tl,
     lecturer   .initial:n = {示例讲师},
 
-    date       .tl_set:N = \l_aust_date_tl,
+    date       .tl_set:N = \l_aust_cr_date_tl,
     date       .initial:n = {示例1945年01月01日},
 }
 
 % 内部排版函数 (纯逻辑，不含接口)
-\cs_new_protected:Npn \aust_report_cover_internal:
+\cs_new_protected:Npn \aust_class_report_cover_internal:
 {
     \begin{titlepage}
         \austnopagenum
@@ -152,51 +152,146 @@
             \includegraphics{aust-logo-banner.jpg}
         \end{figure}
         \vspace{0.4cm}
-        {\heiti \zihao{2} \textbf{\tl_use:N \l_aust_semester_tl} \par }
+        {\heiti \zihao{2} \textbf{\tl_use:N \l_aust_cr_semester_tl} \par }
         \vspace{0.4cm}
-        {\heiti \zihao{2} \textbf{\tl_use:N \l_aust_level_tl} \par }
+        {\heiti \zihao{2} \textbf{\tl_use:N \l_aust_cr_level_tl} \par }
         \vspace{0.4cm}
-        {\songti \zihao{1} \textbf{\tl_use:N \l_aust_course_tl} \par }
+        {\songti \zihao{1} \textbf{\tl_use:N \l_aust_cr_course_tl} \par }
 
         \vfill
         {
             \kaishu{} \zihao{3}
             \begin{tabular}{r@{\quad}p{11.5em}}
-                题\hspace{2em}目： & \tl_use:N \l_aust_title_tl \\
+                题\hspace{2em}目： & \tl_use:N \l_aust_cr_title_tl \\
                 \cline{2-2}
-                学\hspace{2em}院： & \tl_use:N \l_aust_school_tl \\
+                学\hspace{2em}院： & \tl_use:N \l_aust_cr_school_tl \\
                 \cline{2-2}
-                专\hspace{2em}业： & \tl_use:N \l_aust_major_tl \\
+                专\hspace{2em}业： & \tl_use:N \l_aust_cr_major_tl \\
                 \cline{2-2}
-                学\hspace{2em}号： & \tl_use:N \l_aust_sid_tl \\
+                学\hspace{2em}号： & \tl_use:N \l_aust_cr_sid_tl \\
                 \cline{2-2}
-                姓\hspace{2em}名： & \tl_use:N \l_aust_name_tl \\
+                姓\hspace{2em}名： & \tl_use:N \l_aust_cr_name_tl \\
                 \cline{2-2}
-                任课教师： & \tl_use:N \l_aust_lecturer_tl \\
+                任课教师： & \tl_use:N \l_aust_cr_lecturer_tl \\
                 \cline{2-2}
             \end{tabular}
         }
         \vfill
 
-        {\kaishu \zihao{3} \tl_use:N \l_aust_date_tl \par }
+        {\kaishu \zihao{3} \tl_use:N \l_aust_cr_date_tl \par }
     \end{titlepage}
 }
 
 % 全局配置命令
-\NewDocumentCommand \austreportsetup { m }
-  { \keys_set:nn { aust/report } { #1 } }
+\NewDocumentCommand \austclassreportsetup { m }
+  { \keys_set:nn { aust/class_report } { #1 } }
 
 % 封面生成接口 (xparse 风格，支持局部覆盖)
 % AUST课程报告封面
-\NewDocumentCommand \austreportcover { O{} }
+\NewDocumentCommand \austclassreportcover { O{} }
   {
     \group_begin:
-    \keys_set:nn { aust/report } { #1 }
-    \aust_report_cover_internal:
+    \keys_set:nn { aust/class_report } { #1 }
+    \aust_class_report_cover_internal:
     \group_end:
   }
 % AUST论文封面
 
+
+% region: 读书报告封面
+% 定义键值族
+\keys_define:nn { aust/book_report }
+{
+    level       .tl_set:N = \l_aust_br_level_tl,
+    level       .initial:n = {示例研究生读书报告},
+
+    name        .tl_set:N = \l_aust_br_name_tl,
+    name        .initial:n = {示例姓名},
+    sid         .tl_set:N = \l_aust_br_sid_tl,
+    sid         .initial:n = {示例1945000000},
+    institution .tl_set:N = \l_aust_br_institution_tl,
+    institution .initial:n = {示例培养单位},
+    major       .tl_set:N = \l_aust_br_major_tl,
+    major       .initial:n = {示例学科专业},
+    mentor      .tl_set:N = \l_aust_br_mentor_tl,
+    mentor      .initial:n = {示例导师},
+    direction   .tl_set:N = \l_aust_br_direction_tl,
+    direction   .initial:n = {示例研究方向},
+
+    title       .tl_set:N = \l_aust_br_title_tl,
+    title       .initial:n = {示例读书报告},
+    refcnt      .tl_set:N = \l_aust_br_refcnt_tl,
+    refcnt      .initial:n = {示例文献数量},
+
+    school      .tl_set:N = \l_aust_br_school_tl,
+    school      .initial:n = {示例学院},
+    date        .tl_set:N = \l_aust_br_date_tl,
+    date        .initial:n = {示例1945年01月01日},
+}
+
+% 内部排版函数
+\cs_new_protected:Npn \aust_book_report_cover_internal:
+{
+    \begin{titlepage}
+        \austnopagenum
+        \centering
+        \renewcommand{\arraystretch}{1.6}
+
+        \begin{figure}[!h]
+            \centering
+            \includegraphics{aust-nologo-banner.png}
+        \end{figure}
+        \vspace{0.4cm}
+        {\songti \zihao{2} \textbf{\tl_use:N \l_aust_br_level_tl} \par }
+
+        \vspace{4em}
+        {
+            \heiti{} \zihao{4}
+            \begin{tabular}{rp{8em}rp{8em}}
+                姓\hspace{2em}名： & {\fangsong \zihao{-4} \tl_use:N \l_aust_br_name_tl} & 
+                学\hspace{2em}号： & {\fangsong \zihao{-4} \tl_use:N \l_aust_br_sid_tl} \\
+                \cline{2-2} \cline{4-4}
+                培养单位： & {\fangsong \zihao{-4} \tl_use:N \l_aust_br_institution_tl} & 
+                学科专业： & {\fangsong \zihao{-4} \tl_use:N \l_aust_br_major_tl} \\
+                \cline{2-2} \cline{4-4}
+                导\hspace{2em}师： & {\fangsong \zihao{-4} \tl_use:N \l_aust_br_mentor_tl} & 
+                研究方向： & {\fangsong \zihao{-4} \tl_use:N \l_aust_br_direction_tl} \\
+                \cline{2-2} \cline{4-4}
+            \end{tabular}
+        }
+        \par
+
+        \vspace{4em}
+        {
+            \heiti{} \zihao{-4}
+            \begin{tabular}{|r|p{24em}|}
+                \hline
+                读书报告题目： & {\fangsong \zihao{5} \tl_use:N \l_aust_br_title_tl} \\
+                \hline
+                文献综述数量： & {\fangsong \zihao{5} \tl_use:N \l_aust_br_refcnt_tl} \\
+                \hline
+            \end{tabular}
+        }
+
+        \vfill
+        {\fangsong \zihao{3} \tl_use:N \l_aust_br_school_tl \par }
+        {\fangsong \zihao{3} \tl_use:N \l_aust_br_date_tl \par }
+    \end{titlepage}
+}
+
+% 全局配置命令
+\NewDocumentCommand \austbookreportsetup { m }
+  { \keys_set:nn { aust/book_report } { #1 } }
+
+% 封面生成接口 (支持局部覆盖)
+\NewDocumentCommand \austbookreportcover { O{} }
+  {
+    \group_begin:
+    \keys_set:nn { aust/book_report } { #1 }
+    \aust_book_report_cover_internal:
+    \group_end:
+  }
+% endregion
 
 \ExplSyntaxOff
 % endregion
