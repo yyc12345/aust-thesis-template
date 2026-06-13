@@ -115,7 +115,7 @@
 \keys_define:nn { aust/report }
 {
     semester   .tl_set:N = \l_aust_semester_tl,
-    semester   .initial:n = {示例2025-2026学年~秋季学期},
+    semester   .initial:n = {示例2025-2026学年秋季学期},
     level      .tl_set:N = \l_aust_level_tl,
     level      .initial:n = {示例研究生课程},
     course     .tl_set:N = \l_aust_course_tl,
@@ -128,14 +128,14 @@
     major      .tl_set:N = \l_aust_major_tl,
     major      .initial:n = {示例专业},
     sid        .tl_set:N = \l_aust_sid_tl,
-    sid        .initial:n = {1945000000},
+    sid        .initial:n = {示例1945000000},
     name       .tl_set:N = \l_aust_name_tl,
     name       .initial:n = {示例姓名},
     lecturer   .tl_set:N = \l_aust_lecturer_tl,
     lecturer   .initial:n = {示例讲师},
 
     date       .tl_set:N = \l_aust_date_tl,
-    date       .initial:n = {1945年01月01日},
+    date       .initial:n = {示例1945年01月01日},
 }
 
 % 内部排版函数 (纯逻辑，不含接口)
@@ -146,7 +146,7 @@
         \centering
         \renewcommand{\arraystretch}{1.6}
 
-        \begin{figure}[htbp]
+        \begin{figure}[H]
             \centering
             \includegraphics{aust-report-banner.jpg}
         \end{figure}
