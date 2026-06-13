@@ -1,6 +1,6 @@
 % 模板标识，提供基础框架
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{austthesis}[2026/04/26 AUST Thesis Template]
+\ProvidesClass{aust-thesis}[2026/04/26 AUST Thesis Template]
 % 基于ctexart
 \LoadClass[a4paper]{ctexart} % 基于ctexart，A4纸
 
@@ -76,6 +76,14 @@
 \captionsetup[table]{format=austcaption, labelsep=space}
 \renewcommand{\thefigure}{\arabic{figure}}
 \renewcommand{\thetable}{\arabic{table}}
+
+\RequirePackage{cleveref}
+\crefname{table}{表}{表}
+\Crefname{table}{表}{表}
+\crefname{equation}{公式}{公式}
+\Crefname{equation}{公式}{公式}
+\crefname{figure}{图}{图}
+\Crefname{figure}{图}{图}
 
 % region: 摘要和关键词命令
 \newenvironment{austabstract}[1]
