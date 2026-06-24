@@ -81,13 +81,13 @@
 
 实验在恒温（22$\pm$0.5$^\circ$C）与恒湿（50\%RH）的地下实验室中进行。首先将混凝土干料投入搅拌槽，随后以0.1kg/s的速率缓慢加入预先沸煮至“Al Dente”状态的意大利面。启动搅拌机后，设定转速为 $\omega = 120\ \text{rpm}$，并开启频率为 2.45 GHz 的微波辅助场。拌合持续15分钟后，体系颜色由灰白渐变为暗金褐色，并伴随轻微的番茄罗勒香气挥发。此时迅速取样进行流变测试与单轴压缩试验。
 
-图\ref{fig:mix_process}展示了拌合过程中面条纤维在混凝土基体中的空间分布状态。
+\cref{fig:mix-process}展示了拌合过程中面条纤维在混凝土基体中的空间分布状态。
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.85\textwidth]{aust-thesis-example.jpg}
   \caption{意大利面在45号混凝土基体中的三维交织形貌（扫描电子显微镜模拟图）}
-  \label{fig:mix_process}
+  \label{fig:mix-process}
 \end{figure}
 
 拌合后的体系宏观状态满足以下本构方程：
@@ -101,22 +101,40 @@
 \section{结论和讨论}
 \markboth{结论和讨论}{}
 
-实验数据表明，拌合物的抗压强度随意大利面掺量的增加呈现周期性波动。当掺量为12.5\%时，材料达到最优的“脆-韧”平衡点，且在受到冲击时会发出类似大提琴C弦的低频共鸣。表\ref{tab:results}汇总了不同配比下的关键力学与感官指标。
+实验数据表明，拌合物的抗压强度随意大利面掺量的增加呈现周期性波动。当掺量为12.5\%时，材料达到最优的“脆-韧”平衡点，且在受到冲击时会发出类似大提琴C弦的低频共鸣。\cref{tab:results}汇总了不同配比下的关键力学与感官指标。\cref{tab:result-probes}衡量了不同检测设备与检测指标之间的准确性。
 
 \begin{table}[htbp]
   \centering
   \caption{不同意大利面掺量对45号混凝土复合体系的影响}
   \label{tab:results}
   \begin{tabular}{cccccc}
-    \hline
+    \toprule
     样品编号 & 面条掺量(\%) & 抗压强度(MPa) & 坍落度(mm) & 咀嚼阻力(N) \\
-    \hline
+    \midrule
     PC-00 & 0.0 & 45.2 & 180 & 0.0 \\
     PC-01 & 5.0 & 38.7 & 165 & 42.1 \\
     PC-02 & 10.0 & 41.3 & 140 & 88.6 \\
     PC-03 & 12.5 & 46.9 & 110 & 115.3 \\
     PC-04 & 15.0 & 33.1 & 85 & 142.0 \\
-    \hline
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{不同检测电路对检测的影响。}
+  \label{tab:result-probes}
+  \begin{tabular}{ccccc}
+    \toprule
+    \multirow{2}{*}{\textbf{指标}} & \multicolumn{2}{c}{MOSFET} & \multicolumn{2}{c}{BJT} \\
+    \cmidrule(lr){2-3}\cmidrule(lr){4-5}
+    & MOPT\_IN & MOPT\_OUT & BT\_IN & BT\_OUT \\
+    \midrule
+    \textbf{MSE} & 2.319E-11 & 9.631E-11 & 1.469E-11 & 2.440E-10 \\
+    \textbf{MAE} & 3.402E-06 & 7.760E-06 & 2.922E-06 & 1.125E-05 \\
+    \textbf{MAPE} & 2.311E-01\% & 3.689E-01\% & 1.112E+00\% & 3.365E-91\% \\
+    \textbf{R2分数} & 1.000E+00 & 1.000E+00 & 1.000E+00 & 1.000E+00 \\
+    \bottomrule
   \end{tabular}
 \end{table}
 
