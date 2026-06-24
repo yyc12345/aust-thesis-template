@@ -421,7 +421,7 @@
         \renewcommand{\arraystretch}{1.2}
 
         {
-            \songti \zihao{4} A~Dissertation~in~ \underline{\tl_use:N \l_aust_th_major_en_tl} \par
+            \songti \zihao{4} A~Dissertation~in~ \uline{\tl_use:N \l_aust_th_major_en_tl} \par
         }
 
         \vspace{2cm}
@@ -461,16 +461,16 @@
         {
             \fangsong \zihao{4}
             本人声明所呈交的学位论文是本人在导师指导下进行的研究工作及取得的研究成果。
-            据我所知，除了文中特别加以标注和致谢的地方以外，论文中不包含其他人已经发表或撰写过的研究成果，也不包含为获得\underline{\tl_use:N \l_aust_th_university_tl}或其他教育机构的学位或证书而使用过的材料。
+            据我所知，除了文中特别加以标注和致谢的地方以外，论文中不包含其他人已经发表或撰写过的研究成果，也不包含为获得\uline{\tl_use:N \l_aust_th_university_tl}或其他教育机构的学位或证书而使用过的材料。
             与我一同工作的同志对本研究所做的任何贡献均已在论文中作了明确的说明并表示谢意。\par
         }
         \vspace{1cm}
         {
             \flushright
             \fangsong \zihao{4}
-            学位论文作者签名：\underline{\hspace{6em}}
+            学位论文作者签名：\uline{\hspace{6em}}
             \hspace{0.5em}
-            日期：\underline{\hspace{2em}}年\underline{\hspace{1em}}月\underline{\hspace{1em}}日 \par
+            日期：\uline{\hspace{2em}}年\uline{\hspace{1em}}月\uline{\hspace{1em}}日 \par
         }
 
         \vfill
@@ -483,22 +483,22 @@
         \vspace{1cm}
         {
             \fangsong \zihao{4}
-            本学位论文作者完全了解\underline{\tl_use:N \l_aust_th_university_tl}有保留、使用学位论文的规定，即：研究生在校攻读学位期间论文工作的知识产权单位属于 安徽理工大学 。
+            本学位论文作者完全了解\uline{\tl_use:N \l_aust_th_university_tl}有保留、使用学位论文的规定，即：研究生在校攻读学位期间论文工作的知识产权单位属于\uline{\tl_use:N \l_aust_th_university_tl}。
             学校有权保留并向国家有关部门或机构送交论文的复印件和磁盘，允许论文被查阅和借阅。
-            本人授权\underline{\tl_use:N \l_aust_th_university_tl}可以将学位论文的全部或部分内容编入有关数据库进行检索，可以采用影印、缩印或扫描等复制手段保存、汇编学位论文。
+            本人授权\uline{\tl_use:N \l_aust_th_university_tl}可以将学位论文的全部或部分内容编入有关数据库进行检索，可以采用影印、缩印或扫描等复制手段保存、汇编学位论文。
             （保密的学位论文在解密后适用本授权书）\par
         }
         \vspace{1cm}
         {
             \flushright
             \fangsong \zihao{4}
-            学位论文作者签名：\underline{\hspace{6em}}
+            学位论文作者签名：\uline{\hspace{6em}}
             \hspace{0.5em}
-            签字日期：\underline{\hspace{2em}}年\underline{\hspace{1em}}月\underline{\hspace{1em}}日 \par
+            签字日期：\uline{\hspace{2em}}年\uline{\hspace{1em}}月\uline{\hspace{1em}}日 \par
             
-            导师签名\hspace{4em}：\underline{\hspace{6em}}
+            导师签名\hspace{4em}：\uline{\hspace{6em}}
             \hspace{0.5em}
-            签字日期：\underline{\hspace{2em}}年\underline{\hspace{1em}}月\underline{\hspace{1em}}日 \par
+            签字日期：\uline{\hspace{2em}}年\uline{\hspace{1em}}月\uline{\hspace{1em}}日 \par
         }
     \end{titlepage}
 }
