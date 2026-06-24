@@ -293,5 +293,237 @@
   }
 % endregion
 
+% region: 论文封面
+% 定义键值族
+\keys_define:nn { aust/thesis }
+{
+    clcindex          .tl_set:N = \l_aust_th_clcindex_tl,
+    clcindex          .initial:n = {示例中图分类号},
+    catindex          .tl_set:N = \l_aust_th_catindex_tl,
+    catindex          .initial:n = {示例学科分类号},
+    index             .tl_set:N = \l_aust_th_index_tl,
+    index             .initial:n = {示例论文编号},
+    secret            .tl_set:N = \l_aust_th_secret_tl,
+    secret            .initial:n = {示例密级},
+
+    level             .tl_set:N = \l_aust_th_level_tl,
+    level             .initial:n = {示例硕士学位论文},
+    title             .tl_set:N = \l_aust_th_title_tl,
+    title             .initial:n = {示例标题},
+    subtitle          .tl_set:N = \l_aust_th_subtitle_tl,
+    subtitle          .initial:n = {示例副标题},
+    name              .tl_set:N = \l_aust_th_name_tl,
+    name              .initial:n = {示例姓名},
+    major             .tl_set:N = \l_aust_th_major_tl,
+    major             .initial:n = {示例专业},
+    direction         .tl_set:N = \l_aust_th_direction_tl,
+    direction         .initial:n = {示例研究方向},
+    mentor            .tl_set:N = \l_aust_th_mentor_tl,
+    mentor            .initial:n = {示例导师},
+    mentor_institution .tl_set:N = \l_aust_th_mentor_institution_tl,
+    mentor_institution .initial:n = {示例单位},
+    committee_chairman .tl_set:N = \l_aust_th_committee_chairman_tl,
+    committee_chairman .initial:n = {示例主席},
+    defence_date      .tl_set:N = \l_aust_th_defence_date_tl,
+    defence_date      .initial:n = {示例1945年01月01日},
+    date              .tl_set:N = \l_aust_th_date_tl,
+    date              .initial:n = {示例1945年01月01日},
+
+    major_en          .tl_set:N = \l_aust_th_major_en_tl,
+    major_en          .initial:n = {Example Majority},
+    title_en          .tl_set:N = \l_aust_th_title_en_tl,
+    title_en          .initial:n = {Example Title},
+    subtitle_en       .tl_set:N = \l_aust_th_subtitle_en_tl,
+    subtitle_en       .initial:n = {Example Subtitle},
+    name_en           .tl_set:N = \l_aust_th_name_en_tl,
+    name_en           .initial:n = {Joe},
+    mentor_en         .tl_set:N = \l_aust_th_mentor_en_tl,
+    mentor_en         .initial:n = {Joe},
+    school_en         .tl_set:N = \l_aust_th_school_en_tl,
+    school_en         .initial:n = {Example School},
+
+    university        .tl_set:N = \l_aust_th_university_tl,
+    university        .initial:n = {示例大学},
+}
+
+% 内部排版函数
+\cs_new_protected:Npn \aust_thesis_zh_cover_internal:
+{
+    \begin{titlepage}
+        \austnopagenum
+        \centering
+        \renewcommand{\arraystretch}{1.2}
+
+        {
+            \zihao{5}
+            \begin{tabular}{l@{\quad}p{12em}l@{\quad}p{12em}}
+                中图分类号： & \tl_use:N \l_aust_th_clcindex_tl & 
+                论文编号： & \tl_use:N \l_aust_th_index_tl \\
+                \cline{2-2} \cline{4-4}
+                学科分类号： & \tl_use:N \l_aust_th_catindex_tl & 
+                密\hspace{2em}级： & \tl_use:N \l_aust_th_secret_tl \\
+                \cline{2-2} \cline{4-4}
+            \end{tabular}
+        }
+        \par
+
+        \begin{figure}[!h]
+            \centering
+            \includegraphics{aust-logo-banner.jpg}
+        \end{figure}
+        \vspace{0.5em}
+        {\kaishu \zihao{1} \textbf{\tl_use:N \l_aust_th_level_tl} \par }
+
+        \vfill
+
+        {
+            \songti \zihao{-2}
+            \tl_use:N \l_aust_th_title_tl \par
+            \textemdash \textemdash \hspace{0.5em} \tl_use:N \l_aust_th_subtitle_tl \par
+        }
+
+        \vfill
+
+        {
+            \songti{} \zihao{4}
+            \begin{tabular}{l@{\quad}p{11.5em}}
+                \heiti{作者姓名：} & \tl_use:N \l_aust_th_name_tl \\
+                \cline{2-2}
+                \heiti{专业名称：} & \tl_use:N \l_aust_th_major_tl \\
+                \cline{2-2}
+                \heiti{研究方向：} & \tl_use:N \l_aust_th_direction_tl \\
+                \cline{2-2}
+                \heiti{导师姓名：} & \tl_use:N \l_aust_th_mentor_tl \\
+                \cline{2-2}
+                \heiti{导师单位：} & \tl_use:N \l_aust_th_mentor_institution_tl \\
+                \cline{2-2}
+                \heiti{答辩委员会主席：} & \tl_use:N \l_aust_th_committee_chairman_tl \\
+                \cline{2-2}
+                \heiti{论文答辩日期：} & \tl_use:N \l_aust_th_defence_date_tl \\
+                % \cline{2-2}
+            \end{tabular}
+        }
+
+        \vfill
+
+        {
+            \heiti \zihao{4}
+            安徽理工大学研究生院 \par
+            \tl_use:N \l_aust_th_date_tl \par
+        }
+    \end{titlepage}
+}
+\cs_new_protected:Npn \aust_thesis_en_cover_internal:
+{
+    \begin{titlepage}
+        \austnopagenum
+        \centering
+        \renewcommand{\arraystretch}{1.2}
+
+        {
+            \songti \zihao{4} A~Dissertation~in~ \underline{\tl_use:N \l_aust_th_major_en_tl} \par
+        }
+
+        \vspace{2cm}
+
+        {
+            \songti \zihao{-2} 
+            \tl_use:N \l_aust_th_title_en_tl \par
+            \textemdash \textemdash \hspace{0.5em} \tl_use:N \l_aust_th_subtitle_en_tl \par
+        }
+
+        \vfill
+
+        {
+            \songti \zihao{-3}
+            Candidate:~ \tl_use:N \l_aust_th_name_en_tl \par
+            Supervisor:~ \tl_use:N \l_aust_th_mentor_en_tl \par
+            \tl_use:N \l_aust_th_school_en_tl \par
+            Anhui~University~of~Science~and~Technology \par
+            No.~168,~Taifeng~Street,~Huainan,~232001,~Anhui,~P.~R.~China \par
+        }
+
+        \vfill
+    \end{titlepage}
+}
+\cs_new_protected:Npn \aust_thesis_declaration_internal:
+{
+    \begin{titlepage}
+        \austnopagenum
+        \renewcommand{\arraystretch}{1.2}
+
+        {
+            \centering
+            \heiti \zihao{-2}
+            独\hspace{1em}创\hspace{1em}性\hspace{1em}声\hspace{1em}明 \par
+        }
+        \vspace{1cm}
+        {
+            \fangsong \zihao{4}
+            本人声明所呈交的学位论文是本人在导师指导下进行的研究工作及取得的研究成果。
+            据我所知，除了文中特别加以标注和致谢的地方以外，论文中不包含其他人已经发表或撰写过的研究成果，也不包含为获得\underline{\tl_use:N \l_aust_th_university_tl}或其他教育机构的学位或证书而使用过的材料。
+            与我一同工作的同志对本研究所做的任何贡献均已在论文中作了明确的说明并表示谢意。\par
+        }
+        \vspace{1cm}
+        {
+            \flushright
+            \fangsong \zihao{4}
+            学位论文作者签名：\underline{\hspace{6em}}
+            \hspace{0.5em}
+            日期：\underline{\hspace{2em}}年\underline{\hspace{1em}}月\underline{\hspace{1em}}日 \par
+        }
+
+        \vfill
+
+        {
+            \centering
+            \heiti \zihao{-2}
+            学位论文版权使用授权书 \par
+        }
+        \vspace{1cm}
+        {
+            \fangsong \zihao{4}
+            本学位论文作者完全了解\underline{\tl_use:N \l_aust_th_university_tl}有保留、使用学位论文的规定，即：研究生在校攻读学位期间论文工作的知识产权单位属于 安徽理工大学 。
+            学校有权保留并向国家有关部门或机构送交论文的复印件和磁盘，允许论文被查阅和借阅。
+            本人授权\underline{\tl_use:N \l_aust_th_university_tl}可以将学位论文的全部或部分内容编入有关数据库进行检索，可以采用影印、缩印或扫描等复制手段保存、汇编学位论文。
+            （保密的学位论文在解密后适用本授权书）\par
+        }
+        \vspace{1cm}
+        {
+            \flushright
+            \fangsong \zihao{4}
+            学位论文作者签名：\underline{\hspace{6em}}
+            \hspace{0.5em}
+            签字日期：\underline{\hspace{2em}}年\underline{\hspace{1em}}月\underline{\hspace{1em}}日 \par
+            
+            导师签名\hspace{4em}：\underline{\hspace{6em}}
+            \hspace{0.5em}
+            签字日期：\underline{\hspace{2em}}年\underline{\hspace{1em}}月\underline{\hspace{1em}}日 \par
+        }
+    \end{titlepage}
+}
+
+% 全局配置命令
+\NewDocumentCommand \austthesissetup { m }
+  { \keys_set:nn { aust/thesis } { #1 } }
+
+% 封面生成接口 (支持局部覆盖)
+\NewDocumentCommand \austthesiscover { O{} }
+  {
+    \group_begin:
+    \keys_set:nn { aust/thesis } { #1 }
+    \aust_thesis_zh_cover_internal:
+    \aust_thesis_en_cover_internal:
+    \group_end:
+  }
+\NewDocumentCommand \austthesisdeclaration { O{} }
+  {
+    \group_begin:
+    \keys_set:nn { aust/thesis } { #1 }
+    \aust_thesis_declaration_internal:
+    \group_end:
+  }
+% endregion
+
 \ExplSyntaxOff
 % endregion
